@@ -1,0 +1,43 @@
+<html>
+    <head>
+    <title>Admin Kullanıcı Menu</title>
+    <link rel="stylesheet" href="/css/tableForm.css">
+</head>
+<body>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Kullanıcı Adı</th>
+            <th>Ad</th>
+            <th>Soy Ad</th>
+            <th>İlgi Alanlari</th>
+            <th>Doğum Tarihi</th>
+            <th>Telefon No</th>
+            <th>İşlem</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="kullanıcı : ${kullanıcılar}">
+            <td th:text="${kullanıcı.kullanıcıadı}">Kullanıcı Adı</td>
+            <td th:text="${kullanıcı.ad}">Ad</td>
+            <td th:text="${kullanıcı.soyAd}">Soyad</td>
+            <td th:text="${kullanıcı.ilgialanlari}">İlgi Alanları</td>
+            <td th:text="${kullanıcı.doğumtarihi}">Doğum Tarihi</td>
+            <td th:text="${kullanıcı.telefonnumarası}">Telefon No</td>
+            <td>
+                <form th:action="@{/adminupdateuser/{id}(id=${kullanıcı.id})}" method="GET">  
+                   <button type="submit" class="onayla-button">Düzenle</button>
+                </form>
+                <form th:action="@{/admindeleteuser/{id}(id=${kullanıcı.id})}" method="POST">  
+                    <button type="submit" class="reddet-button">Sil</button>
+                </form>          
+            </td>
+         </tr>
+        </tbody>
+    </table>
+    
+    
+</div>
+</body>
+</html>

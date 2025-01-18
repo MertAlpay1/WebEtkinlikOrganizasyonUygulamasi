@@ -1,0 +1,43 @@
+
+<html>
+    <head>
+    <title></title>
+    <link rel="stylesheet" href="/css/tableForm.css"/>
+</head>
+<body>
+<div>
+        <table>
+        <thead>
+        <tr>
+            <th>Etkinlik Adı</th>
+            <th>Açıklama</th>
+            <th>Kategori</th>
+            <th>Tarih</th>
+            <th>Saat</th>
+            <th>Süresi</th>
+            <th>İşlem</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="etkinlik : ${etkinlikler}">
+            <td th:text="${etkinlik.etkinlikadı}">Etkinlik Adı</td>
+            <td th:text="${etkinlik.açıklama}">Açıklama</td>
+            <td th:text="${etkinlik.kategori}">Kategori</td>
+            <td th:text="${etkinlik.tarih}">Tarih</td>
+            <td th:text="${etkinlik.saat}">Saat</td>
+            <td th:text="${etkinlik.süresi}">Süresi</td>
+            <td>
+                <form th:action="@{/ShowactivityonMap/{id}(id=${etkinlik.id})}" method="GET">  
+                   <button type="submit" class="onayla-button">Harita Üzerinde Görüntüle</button>
+                </form>
+                <form th:action="@{/ActivityRoute/{id}(id=${etkinlik.id})}" method="Get">  
+                    <button type="submit" class="onayla-button">Harita Üzerinden Rota Oluştur</button>
+                </form>          
+            </td>
+         </tr>
+        </tbody>
+    </table>
+    
+</div>
+</body>
+</html>

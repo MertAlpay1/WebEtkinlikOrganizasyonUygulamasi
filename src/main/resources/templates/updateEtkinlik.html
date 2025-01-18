@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Etkinlik Güncelle</title>
+        <link rel="stylesheet" href="/css/profileupdate.css"> 
+    </head>
+    <body>
+        <div>
+            <nav>
+                <a href="/adminMenu">Admin Menüsüne Dön</a> 
+            </nav>
+            
+            <h2>Etkinlik Güncelleme</h2>
+            <form action="/updateE" method="POST">
+                
+                 <input type="text" id="etkilikid" name="etkilikid" th:value="${etkinlik.id}" hidden><br><br>
+                
+                <label for="etkinlikadı">Etkinlik Adı:</label>
+                <input type="text" id="etkinlikadı" name="etkinlikadı" th:value="${etkinlik.etkinlikadı}" required><br><br>
+
+                <label for="kategori">Kategori:</label>
+                <input type="text" id="kategori" name="kategori" th:value="${etkinlik.kategori}" required><br><br>
+
+                <label for="aciklama">Açıklama:</label>
+                <input type="text"  id="aciklama" name="aciklama" th:value="${etkinlik.açıklama}" required ><br><br>
+
+                <label for="tarih">Tarih:</label>
+                <input type="date" id="tarih" name="tarih" th:value="${etkinlik.tarih}" required><br><br>
+
+                <label for="saat">Saat:</label>
+                <input type="text" id="saat" name="saat" th:value="${etkinlik.saat}" required><br><br>
+
+                <label for="süresi">Süre:</label>
+                <input type="text" id="süresi" name="süresi" th:value="${etkinlik.süresi}" required><br><br>
+
+                <button type="submit">Güncelle</button>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<html>
+    <head>
+    <title>Aktivite oluşturma</title>  
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqEtLseUUkVgOETI4SxKnagY2d1M77Azc&callback=initMap&libraries=places" async defer></script>
+    <link rel="stylesheet" href="/css/reg.css">
+</head>
+<body>
+<div>
+    <form action= "createactivity" method= "POST" enctype= "multipart/form-data">
+        
+            <label for="etkinlikadı">Etkinlik Adı:</label>
+            <input type="text" id="etkinlikadı" name="etkinlikadı" required><br><br>
+
+            <label for="kategori">Kategori:</label>
+            <input type="text" id="kategori" name="kategori" required><br><br>
+
+            <label for="açıklama">Açıklama:</label>
+            <input type="text" id="açıklama" name="açıklama"><br><br>
+
+            <label for="tarih">Tarih:</label>
+            <input type="date" id="tarih" name="tarih" required><br><br>
+
+            <label for="saat">Saat:</label>
+            <input type="time" id="saat" name="saat" required><br><br>
+
+            <label for="süresi">Süresi (Dakika):</label>
+            <input type="text" id="süresi" name="süresi" required><br><br>
+        
+            <label for="map">Konum:</label>
+            <div id="map"></div>
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
+            <br>
+        
+            <button type="submit">Etkinlik Oluştur</button>
+    </form>
+    <script>
+        function initMap() {
+            console.log("initMap function called"); 
+            const initialPosition = { lat: 39.9334, lng: 32.8597 }; 
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 6,
+                center: initialPosition,
+            });
+            let marker = new google.maps.Marker({
+                position: initialPosition,
+                map: map,
+                draggable: true,
+            });
+
+            marker.addListener("dragend", () => {
+                document.getElementById("latitude").value = marker.getPosition().lat();
+                document.getElementById("longitude").value = marker.getPosition().lng();
+            });
+        }
+    </script>
+</div>
+</body>
+</html>

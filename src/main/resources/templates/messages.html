@@ -1,0 +1,31 @@
+
+<html>
+    <head>
+    <title>Mesajlar</title>
+    <link rel="stylesheet" href="/css/mesaj.css">
+</head>
+<body>
+    
+    
+<div>
+<nav>
+    <a href="/home">Menüye Dön</a>
+</nav>
+    
+<ul>
+    <li th:each="mesaj : ${mesajlar}">
+        <p>[[${mesaj.kullanıcı.kullanıcıadı}]]: [[${mesaj.mesaj}]]</p>
+    </li>
+</ul>
+
+    <div class="message-form">
+        <form action="/sendmessage" method="POST">
+            <textarea name="message" placeholder="Mesajınızı yazın..." required></textarea>
+            <input type="hidden" name="etkinlikId" th:value="${etkinlikId}" />
+            <button type="submit">Gönder</button>
+        </form>
+    </div>
+    
+</div>
+</body>
+</html>

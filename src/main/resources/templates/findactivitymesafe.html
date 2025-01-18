@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="/css/tableForm.css">
+</head>
+<body>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Etkinlik Adı</th>
+                <th>Kategori</th>
+                <th>Açıklama</th>
+                <th>Tarih</th>
+                <th>Saat</th>
+                <th>Süre</th>
+                <th>Mesafe</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr th:each="etkinlikMesafe : ${etkinlikler}">
+                <td th:text="${etkinlikMesafe.etkinlik.etkinlikadı}"></td>
+                <td th:text="${etkinlikMesafe.etkinlik.kategori}"></td>
+                <td th:text="${etkinlikMesafe.etkinlik.açıklama}"></td>
+                <td th:text="${etkinlikMesafe.etkinlik.tarih}"></td>
+                <td th:text="${etkinlikMesafe.etkinlik.saat}"></td>
+                <td th:text="${etkinlikMesafe.etkinlik.süresi}"></td>
+                <td th:text="${etkinlikMesafe.mesafe}"></td>
+                <td>
+                    <form th:action="@{/findactivity/{id}(id=${etkinlikMesafe.etkinlik.id})}" method="POST"> 
+                        <button type="submit" class="onayla-button">Seç</button>
+                    </form>  
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

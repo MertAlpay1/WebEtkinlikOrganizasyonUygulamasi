@@ -1,0 +1,56 @@
+body{
+    font-family: Arial;
+    
+    
+    
+}
+
+h2{
+   color: black;
+   padding: 5px;
+   margin: 5px;
+     
+}
+form{
+  display: flex;
+  flex-direction: column;  
+    
+}
+label {
+    display: block;
+    text-align: left;
+    margin-top: 10px;
+}
+input{
+    max-width: 300px;
+    
+}
+#cinsiyet {
+    width: 150px;   
+}
+
+#map{
+    height: 800px;
+    width: 100%;    
+    
+}
+
+button{
+    width: 50%;
+    padding: 10px;
+    margin-top: 10%;
+    background-color: #4CAF50;
+    color: black;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+p{
+    color:red;
+    padding: 4px;
+    margin:3px;
+    
+}

@@ -1,0 +1,33 @@
+
+<html>
+    <head>
+    <title></title>
+    <link rel="stylesheet" href="/css/home.css"> 
+</head>
+<body>
+<div class="Menu"> 
+    
+    
+<nav>
+    <a href="/profile">Profilim</a> |
+    <a href="/activity">Etkinlikler</a> |
+    <a href="/messageMenu">Mesajlar</a> |
+    <a href="/logout">Çıkış Yap</a>
+</nav>
+
+
+
+</div>
+
+<div class="Bildirim">
+            <h3>Bildirimler</h3>
+     <ul>
+         <li th:each="bildirim : ${bildirimler}">
+               <span th:text="${bildirim.etkinlik.etkinlikadı}"></span> 
+                <span>Etkinliğinden Yeni bir Mesaj</span>
+         </li>
+     </ul>
+</div>
+
+</body>
+</html>

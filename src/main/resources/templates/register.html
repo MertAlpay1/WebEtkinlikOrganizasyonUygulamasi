@@ -1,0 +1,80 @@
+<html>
+<head>
+    <title>Kayıt Ol</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqEtLseUUkVgOETI4SxKnagY2d1M77Azc&callback=initMap&libraries=places" async defer></script>
+    <link rel="stylesheet" href="/css/reg.css">
+</head>
+<body>
+    <h2>Kayıt Ol</h2>
+    <form action="/register" method="post" enctype="multipart/form-data">
+        <div th:if="${error}">
+           <p th:text="${error}"></p>
+        </div>
+        
+        <label for="ad">Ad:</label>
+            <input type="text" id="ad" name="ad" required><br>
+        
+        <label for="soyad">Soyad:</label>
+        <input type="text" id="soyad" name="soyad" required><br>
+        
+         <label for="cinsiyet">Cinsiyet:</label>
+          <select id="cinsiyet" name="cinsiyet" required>
+          <option value="erkek">Erkek</option>
+          <option value="kadın">Kadın</option>
+          </select><br>   
+            
+        <label for="kullanıcıadı">Kullanıcı Adı:</label>
+        <input type="text" id="kullanıcıadı" name="kullanıcıadı" required><br>
+        
+        <label for="şifre">Şifre:</label>
+        <input type="password" id="şifre" name="şifre" required><br>
+        
+        <label for="eposta">E-posta:</label>
+        <input type="email" id="eposta" name="eposta" required><br>
+        
+        
+        
+        <label for="telefonnumarası">Telefon Numarası:</label>
+        <input type="text" id="telefonnumarası" name="telefonnumarası" required><br>
+        
+        <label for="doğumtarihi">Doğum Tarihi:</label>
+        <input type="date" id="doğumtarihi" name="doğumtarihi" required><br>
+        
+        <label for="ilgialanlari">İlgi Alanları:</label>
+        <input type="text" id="ilgialanlari" name="ilgialanlari" placeholder="Birden fazla ise ',' ile ayırınız" required><br>
+        
+        <label for="profilfotoğrafı">Profil Fotoğrafı:</label>
+        <input type="file" id="profilfotoğrafı" name="profilfotoğrafı" required><br>
+        
+        
+        <label for="map">Konum:</label>
+        <div id="map"></div>
+        <input type="hidden" name="latitude" id="latitude">
+        <input type="hidden" name="longitude" id="longitude">
+        <br>
+        
+        <button type="submit">Kayıt Ol</button>
+    </form>
+
+    <script>
+        function initMap() {
+            console.log("initMap function called"); 
+            const initialPosition = { lat: 39.9334, lng: 32.8597 }; 
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 6,
+                center: initialPosition,
+            });
+            let marker = new google.maps.Marker({
+                position: initialPosition,
+                map: map,
+                draggable: true,
+            });
+
+            marker.addListener("dragend", () => {
+                document.getElementById("latitude").value = marker.getPosition().lat();
+                document.getElementById("longitude").value = marker.getPosition().lng();
+            });
+        }
+    </script>
+</body>
+</html>

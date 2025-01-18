@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/loginStyles.css"> 
+</head>
+<body>
+    <div class="login-container">
+        <div th:if="${error}">
+           <p th:text="${error}"></p>
+        </div>
+
+    <form action="/login" method="POST"> 
+        <h1>Kullanıcı Giriş</h1>
+        <label for="username">Kullanıcı Adi:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Şifre:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">Giriş Yap</button>
+    </form>
+    <form action="/resetpassword"method="GET">
+        <button type="submit">Şifremi Unuttum</button>
+    </form>
+    <form action="/register"method="GET">
+        <button type="submit">Kayıt Ol</button>
+    
+    </div>
+</body>
+</html>

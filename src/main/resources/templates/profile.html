@@ -1,0 +1,25 @@
+
+<html>
+    <head>
+    <title>Profil</title>
+    <link rel="stylesheet" href="css/showprofile.css">
+</head>
+<body>
+<div> 
+ <nav>
+    <a href="/profile/update">Profil Guncelle</a> |
+    <a href="/home">Geri Dön</a> 
+  </nav>
+    
+<img th:src="@{/profile/{userId}(userId=${kullanıcı.id})}" alt="fotoğraf" width="200" height="200" />
+
+    <p>Ad: <span th:text="${kullanıcı.ad}">Ad</span></p>
+    <p>Soyad: <span th:text="${kullanıcı.soyAd}">soyAd</span></p>
+    <p>Kullanıcı Ad: <span th:text="${kullanıcı.kullanıcıadı}">kAd</span>  </p>
+    <p>DoğumTarihi: <span th:text="${kullanıcı.doğumtarihi}">DTarihi</span></p>
+    <p>TelefonNumarası: <span th:text="${kullanıcı.telefonnumarası}">tNo</span></p>
+    <p>İlgi Alanlari: <span th:text="${kullanıcı.ilgialanlari}">ilgiAlan</span></p>
+    <p>Toplam Puan: <span th:text="${puan}">puan</span></p>
+</div>
+</body>
+</html>

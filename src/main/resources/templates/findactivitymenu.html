@@ -1,0 +1,22 @@
+
+<html>
+    <head>
+    <title>Aktivite Bulma Menü</title>
+    <link rel="stylesheet"  href="/css/home.css">
+</head>
+<body>
+<div>
+    <nav>
+        <a href="/normalEtkinlik ">Tüm Etkinlikler</a>
+        <a href="/ilgialanetkinlik ">Mevcut İlgi Alanına Göre</a>
+        <a href="/katılımgeçmişetkinlik">Katılım Geçmişine Göre</a>
+        <a href="/konumuzaklıketkinlik">Mevcut Konuma Yakınlığına Göre</a>
+        <a href="/home">Geri Dön</a> 
+    </nav>
+    <div>
+        <span th:if="${error}" th:text="${error}" style="color: red; font-weight: bold;"></span>
+    </div>
+    
+</div>
+</body>
+</html>

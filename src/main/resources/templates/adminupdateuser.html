@@ -1,0 +1,28 @@
+<html>
+    <head>
+    <title></title>
+    <link rel="stylesheet" href="/css/profileupdate.css">
+</head>
+<body>
+<div>
+    <form th:action="@{/adminuserupdate/{id}(id=${kullanıcı.id})}" method="POST">
+                <label for="ad">Ad:</label>
+                <input type="text" id="ad" name="ad" th:value="${kullanıcı.ad}" required><br><br>
+
+                <label for="soyad">Soyad:</label>
+                <input type="text" id="soyad" name="soyad" th:value="${kullanıcı.soyAd}" required><br><br>
+
+                <label for="dogumTarihi">Doğum Tarihi:</label>
+                <input type="date" id="dogumTarihi" name="dogumTarihi" th:value="${kullanıcı.doğumtarihi}" required><br><br>
+
+                <label for="telefonNumarasi">Telefon Numarası:</label>
+                <input type="text" id="telefonNumarasi" name="telefonNumarasi" th:value="${kullanıcı.telefonnumarası}" required><br><br>
+
+                <label for="ilgiAlanlari">İlgi Alanları:</label>
+                <input type="text" id="ilgiAlanlari" name="ilgiAlanlari" th:value="${kullanıcı.ilgialanlari}" required><br><br>
+
+                <button type="submit">Güncelle</button> 
+            </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+    <head>
+    <title>Etkinlik Menü</title>
+    <link rel="stylesheet"  href="/css/home.css">
+</head>
+<body>
+<div>
+    <nav>
+        <a href="/activeactivity">Etkinliklerim</a>
+        <a href="/createactivity">Etkinlik Oluştur</a>
+        <a href="/findactivitymenu">Aktivite bul</a>
+        <a href="/home">Geri Dön</a> 
+    </nav>
+    <div>
+        <span th:if="${error}" th:text="${error}" style="color: red; font-weight: bold;"></span>
+    </div>
+</div>
+</body>
+</html>

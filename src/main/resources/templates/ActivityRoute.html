@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Activity Route</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqEtLseUUkVgOETI4SxKnagY2d1M77Azc"></script>
+
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+        #controls {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <label for="travel-mode">Ulaşım Modu:</label>
+        <select id="travel-mode">
+            <option value="DRIVING">Araba</option>
+            <option value="WALKING">Yürüyerek</option>
+            <option value="BICYCLING">Bisiklet</option>
+            <option value="TRANSIT">Toplu Taşıma</option>
+        </select>
+        <button id="route-btn">Rota Oluştur</button>
+    </div>
+    <div id="map"></div>
+
+    <script>
+        let map, marker, directionsService, directionsRenderer;
+
+        function initMap() {
+            const eventLatitude = [[${latitude}]];
+            const eventLongitude = [[${longitude}]];
+            const eventLocation = { lat: eventLatitude, lng: eventLongitude };
+
+            const initialUserLocation = { lat: 39.9334, lng: 32.8597 };
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 14,
+                center: initialUserLocation
+            });
+
+            marker = new google.maps.Marker({
+                position: initialUserLocation,
+                map: map,
+                draggable: true, 
+                title: "Konumunuz"
+            });
+
+            new google.maps.Marker({
+                position: eventLocation,
+                map: map,
+                title: "Etkinlik Konumu"
+            });
+
+            directionsService = new google.maps.DirectionsService();
+            directionsRenderer = new google.maps.DirectionsRenderer();
+            directionsRenderer.setMap(map);
+
+            document.getElementById("route-btn").addEventListener("click", () => {
+                const travelMode = document.getElementById("travel-mode").value;
+                const userLocation = marker.getPosition();
+
+                calculateRoute(userLocation, eventLocation, travelMode);
+            });
+        }
+
+        function calculateRoute(userLocation, eventLocation, travelMode) {
+            directionsService.route(
+                {
+                    origin: { lat: userLocation.lat(), lng: userLocation.lng() },
+                    destination: eventLocation,
+                    travelMode: travelMode
+                },
+                (response, status) => {
+                    if (status === "OK") {
+                        directionsRenderer.setDirections(response);
+                    } else if (status === "ZERO_RESULTS") {
+                      alert("Seçilen ulaşım modunda uygun bir rota bulunamadı. Lütfen başka bir ulaşım modu seçin.");
+                       } else {
+                        console.error("Rota oluşturulamadı: " + status);
+                        alert("Rota oluşturulamadı. Lütfen tekrar deneyin.");
+                    }
+                }
+            );
+        }
+
+        window.onload = initMap;
+    </script>
+</body>
+</html>
